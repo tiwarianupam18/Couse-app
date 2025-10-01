@@ -29,9 +29,9 @@ function AdminLogin() {
           },
         }
       );
+      navigate("/admin/dashboard");
       console.log("AdminLogin successful: ", response.data);
       toast.success(response.data.message);
-      navigate("/admin/dashboard");
       localStorage.setItem("admin", JSON.stringify(response.data));
     } catch (error) {
       if (error.response) {

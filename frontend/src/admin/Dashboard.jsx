@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../public/logo.webp";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { BACKEND_URL } from "../utils/utils";
 function Dashboard() {
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/admin/logout`, {
@@ -12,9 +14,11 @@ function Dashboard() {
       });
       toast.success(response.data.message);
       localStorage.removeItem("admin");
+
+      navigate("/admin/login", { replace: true }); // force redirect
     } catch (error) {
       console.log("Error in logging out ", error);
-      toast.error(error.response.data.errors || "Error in logging out");
+      toast.error(error.response?.data?.errors || "Error in logging out");
     }
   };
   return (
