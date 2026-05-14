@@ -153,7 +153,7 @@ export const buyCourses = async (req, res) => {
     }
 
     // stripe payment code goes here!!
-    const amount = course.price;
+    const amount = course.price * 100;
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: "usd",

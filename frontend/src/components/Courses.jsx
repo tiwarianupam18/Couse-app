@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // Import axios for API call
 import { FaCircleUser } from "react-icons/fa6";
@@ -106,14 +105,14 @@ function Courses() {
               </a>
             </li>
             <li className="mb-4">
-              <a href="#" className="flex items-center">
+              <a href="/settings" className="flex items-center">
                 <IoMdSettings className="mr-2" /> Settings
               </a>
             </li>
             <li>
               {isLoggedIn ? (
-                <Link to={"/"}
-                  
+                <Link
+                  to={"/"}
                   className="flex items-center"
                   onClick={handleLogout}
                 >
@@ -166,7 +165,7 @@ function Courses() {
                   className="border border-gray-200 rounded-lg p-4 shadow-sm"
                 >
                   <img
-                    src={course.image.url}
+                    src={course.image?.url || "https://via.placeholder.com/300"}
                     alt={course.title}
                     className="rounded mb-4"
                   />
